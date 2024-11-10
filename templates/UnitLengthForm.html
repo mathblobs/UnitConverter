@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <style>
+        /* Styling the button */
+        .underline1-button {
+            background: none;
+            border: none;
+            font-size: 24px; /* Adjust size as needed */
+            color: #0664cf; /* Blue color */
+            cursor: pointer;
+            position: relative;
+            font-family: Arial, sans-serif;
+        }
+
+        .underline-button {
+            background: none;
+            border: none;
+            font-size: 24px; /* Adjust size as needed */
+            color: #000000; /* Blue color */
+            cursor: pointer;
+            position: relative;
+            font-family: Arial, sans-serif;
+        }
+
+        
+        /* Hover effect */
+        .underline-button:hover::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 3px; 
+            background-color: #4a80f5;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transition: transform 0.3s ease;
+            transform: scaleX(1); 
+            transform-origin: bottom left;
+            transform: scaleX(1.1); /* Scale the underline slightly on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Unit Converter</h1>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                    <button class="underline-button">Length</button>
+                    <button class="underline-button"><a href="{{ url_for('form_w') }}">Weight</a></button>
+                    <button class="underline-button"><a href="{{ url_for('form_t') }}">Temperature</a></button>
+            </div>
+        </div>
+    </nav>
+
+    <form action="{{ url_for('length_calculate') }}" method="post">
+        <label for="length">Enter the length to Convert</label><br>
+        <input type="number" id="length" name="length" required><br>
+
+        <label for="lunitfrom">Unit to convert from</label><br>
+        <input type="string" id="lunitfrom" name="lunitfrom" required><br>
+
+        <label for="lunitto">Unit to convert to</label><br>
+        <input type="string" id="lunitto" name="lunitto" required><br>
+
+        <button type="submit">Convert</button>
+    </form>
+
+    <!--
+    Enter the length to Convert <br>
+    <input type="text" id="name" name="name" placeholder="Your name">
+    <br><br>
+    Unit to convert from <br>
+    <input type="text" id="name" name="name" placeholder="Your name">
+    <br><br>
+    Unit to convert to <br>
+    <input type="text" id="name" name="name" placeholder="Your name">
+
+    <br><br>
+
+    <button type="submit">Button</button>
+
+    -->
+    <!--
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar2</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+      </nav>
+      -->
+</body>
+</html>

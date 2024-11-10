@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <style>
+        
+        .underline1-button {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #0664cf;
+            cursor: pointer;
+            position: relative;
+            font-family: Arial, sans-serif;
+        }
+
+        .underline-button {
+            background: none;
+            border: none;
+            font-size: 24px; /* Adjust size as needed */
+            color: #000000; /* Blue color */
+            cursor: pointer;
+            position: relative;
+            font-family: Arial, sans-serif;
+        }
+
+        
+        .underline-button::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 3px; 
+            background-color: #4a80f5;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transition: transform 0.3s ease;
+            transform: scaleX(1); 
+            transform-origin: bottom left;
+        }
+
+        
+        .underline-button:hover::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 3px; 
+            background-color: #4a80f5;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transition: transform 0.3s ease;
+            transform: scaleX(1); 
+            transform-origin: bottom left;
+            transform: scaleX(1.1); 
+        }
+    </style>
+</head>
+<body>
+    <h1>Unit Converter</h1>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                    <button class="underline-button"><a href="{{ url_for('form') }}">Length</a></button>
+                    <button class="underline-button">Weight</button>
+                    <button class="underline-button"><a href="{{ url_for('form_t') }}">Temperature</a></button>
+            </div>
+        </div>
+    </nav>
+
+    <form action="{{ url_for('weight_calculate') }}" method="post">
+        <label for="weight">Enter the weight to Convert</label><br>
+        <input type="number" id="weight" name="weight" required><br>
+
+        <label for="lunitfrom">Unit to convert from</label><br>
+        <input type="string" id="lunitfrom" name="lunitfrom" required><br>
+
+        <label for="lunitto">Unit to convert to</label><br>
+        <input type="string" id="lunitto" name="lunitto" required><br>
+
+        <button type="submit">Convert</button>
+    </form>
+
+</body>
+</html>
